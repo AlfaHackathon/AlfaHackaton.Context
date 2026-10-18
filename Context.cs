@@ -13,8 +13,7 @@ public class Context
         string userAgent,
         Authorize authorize,
         CancellationToken cancellationToken,
-        Dictionary<string, string>? additionalHeaders = null,
-        short apiVersion = 1)
+        Dictionary<string, string>? additionalHeaders = null)
     {
         AuthToken = authToken;
         Locale = locale;
@@ -23,7 +22,6 @@ public class Context
         Authorize = authorize;
         CancellationToken = cancellationToken;
         AdditionalHeaders = additionalHeaders ?? new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
-        ApiVersion = apiVersion;
     }
 
     public string AuthToken { get; private set; } = string.Empty;
@@ -33,7 +31,6 @@ public class Context
     public Authorize Authorize { get; private set; } = Authorize.Empty();
     public CancellationToken CancellationToken { get; private set; }
     public Dictionary<string, string> AdditionalHeaders { get; set; } = new(StringComparer.OrdinalIgnoreCase);
-    public short ApiVersion { get; private set; } = 1;
 
     public static Context New(string token, CancellationToken cancellationToken = default)
     {
